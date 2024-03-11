@@ -3,11 +3,14 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 from database import db_init
+import os
+from dotenv import load_dotenv
 
 # Initiate the using database for logins
+load_dotenv()
 host = 'localhost'
-user = 'meysam'
-password = 'password'
+user = os.environ['USER']
+password = os.environ['PASSWORD']
 database = 'logins'
 
 db_init.create_database(host, user, password, database)
