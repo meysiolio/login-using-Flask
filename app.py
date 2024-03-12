@@ -8,21 +8,21 @@ from dotenv import load_dotenv
 
 # Initiate the using database for logins
 load_dotenv()
-host = 'localhost'
-user = os.environ['USER']
-password = os.environ['PASSWORD']
+db_host = 'localhost'
+db_user = os.environ['USER']
+db_password = os.environ['PASSWORD']
 database = 'logins'
 
-db_init.create_database(host, user, password, database)
+db_init.create_database(db_host, db_user, db_password, database)
 
 # Initiate Flask app
 app = Flask(__name__)
 
 app.secret_key = 'your secret key'
 
-app.config['MYSQL_HOST'] = host
-app.config['MYSQL_USER'] = user
-app.config['MYSQL_PASSWORD'] = password
+app.config['MYSQL_HOST'] = db_host
+app.config['MYSQL_USER'] = db_user
+app.config['MYSQL_PASSWORD'] = db_password
 app.config['MYSQL_DB'] = database
 
 mysql = MySQL(app)
